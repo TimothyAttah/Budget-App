@@ -1,11 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+import Header from './components/Header';
+
+const Main = styled.main`
+ border: 2px solid red;
+ width: 100%;
+ max-width: 1200px;
+ margin: 0 auto;
+`;
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
-      <h2>Testing</h2>
-    </div>
+    <Main>
+      <Header />
+    </Main>
   );
 };
 

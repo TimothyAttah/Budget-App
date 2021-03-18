@@ -25,6 +25,15 @@
                 "allow": "as-needed"
             }
         ],
+        "react/jsx-curly-spacing": [
+            0,
+            {
+                "when": "always",
+                "spacing": {
+                    "objectLiterals": "never"
+                }
+            }
+        ],
         "space-in-parens": 0,
         "comma-dangle": 0,
         "arrow-body-style": 0
