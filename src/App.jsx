@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './components/Header';
+import Budget from './pages/budgets/Budget';
 
 const Main = styled.main`
  border: 2px solid red;
@@ -12,7 +12,7 @@ const Main = styled.main`
 const App = () => {
   return (
     <Main>
-      <Header />
+      <Budget />
     </Main>
   );
 };
