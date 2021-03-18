@@ -8,7 +8,6 @@ import ExpensesTransaction from './ExpensesTransaction';
 import Header from '../../components/Header';
 
 const TopSection = styled.section`
- border: 2px saddlebrown dashed;
  display: flex;
  flex-direction: column;
  justify-content: center;
