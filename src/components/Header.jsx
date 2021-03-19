@@ -5,7 +5,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
- 
+  margin-bottom: 50px;
   h1, h4 {
      margin: 0;
     padding: 0;

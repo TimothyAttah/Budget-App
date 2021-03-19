@@ -38,7 +38,7 @@ li h3 {
 
 `;
 
-const expenses = [
+export const expenses = [
   {
     id: 1,
     content: 'Groceries',

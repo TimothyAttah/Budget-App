@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import IncomeTransactionForm from '../../components/forms/IncomeTransactionForm';
 import ExpensesTransactionForm from '../../components/forms/ExpensesTransactionForm';
-import IncomeTransaction from './IncomeTransaction';
+import IncomeTransaction, { incomes } from './IncomeTransaction';
 import ExpensesTransaction from './ExpensesTransaction';
 import Header from '../../components/Header';
+import Balance from './Balance';
 
 const TopSection = styled.section`
  display: flex;
@@ -13,10 +14,6 @@ const TopSection = styled.section`
  justify-content: center;
  align-items: center;
  background: linear-gradient(45deg,rgba(255,0,0,0), rgba(0,0,255,1));
-  h2 {
-    margin: 50px 0px;
-    color: #fff;
-  }
 `;
 
 const ListSection = styled.section`
@@ -26,11 +23,12 @@ const ListSection = styled.section`
 `;
 
 const Budget = () => {
+  console.log( incomes );
   return (
     <>
       <TopSection>
         <Header />
-        <h2>Total Budget: +$10,000.00</h2>
+        <Balance />
         <IncomeTransactionForm />
         <ExpensesTransactionForm />
       </TopSection>

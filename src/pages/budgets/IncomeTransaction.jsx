@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Button } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -39,7 +39,7 @@ li h3 {
 
 `;
 
-const incomes = [
+export const incomes = [
   {
     id: 1,
     content: 'Salary',
@@ -76,8 +76,8 @@ const IncomeTransaction = () => {
                   <span>{ `$ ${ income.value }` }</span>
                 </h3>
                 <div>
-                  <button type="button"><Icon name="trash" color="red" /></button>
-                  <button type="button"><Icon name="edit" color="blue" /></button>
+                  <Button type="button"><Icon name="trash" color="red" /></Button>
+                  <Button type="button"><Icon name="edit" color="blue" /></Button>
                 </div>
               </li>
             );
