@@ -1,5 +1,5 @@
 import {
-  CREATE_BUDGETS, LIST_BUDGETS, DELETE_BUDGET, EDIT_BUDGET
+  CREATE_INCOME_BUDGETS, LIST_INCOME_BUDGETS, DELETE_INCOME_BUDGET, EDIT_INCOME_BUDGET
 } from '../type';
 
 const initialState = {
@@ -29,21 +29,21 @@ const initialState = {
 
 const incomeBudgets = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case CREATE_BUDGETS:
+    case CREATE_INCOME_BUDGETS:
       return {
         ...state,
         budgets: [ action.payload, ...state.budgets ]
       };
-    case LIST_BUDGETS:
+    case LIST_INCOME_BUDGETS:
       return {
         ...state
       };
-    case DELETE_BUDGET:
+    case DELETE_INCOME_BUDGET:
       return {
         ...state,
         budgets: state.budgets.filter( budget => budget.id !== action.payload )
       };
-    case EDIT_BUDGET:
+    case EDIT_INCOME_BUDGET:
       return {
         ...state,
         budgets: [ ...state.budgets ]
