@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Button } from 'semantic-ui-react';
 
 const Form = styled.form`
   input, button {
@@ -17,11 +17,6 @@ const Form = styled.form`
   #value {
     width: 200px;
   }
-
-  button {
-    background: green;
-    color: #fff;
-  }
 `;
 
 const IncomeTransactionForm = () => {
@@ -31,9 +26,9 @@ const IncomeTransactionForm = () => {
         <label><Icon name="plus" color="green" /></label>
         <input type="text" placeholder="Enter your transactions" id="content" />
         <input type="number" placeholder="value" id="value" />
-        <button type="button">
-          <Icon name="checkmark" color="white" />
-        </button>
+        <Button type="button" color="green">
+          <Icon name="checkmark" />
+        </Button>
       </Form>
     </div>
   );
