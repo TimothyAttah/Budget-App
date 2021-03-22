@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import IncomeTransactionForm from '../../components/forms/IncomeTransactionForm';
 import ExpensesTransactionForm from '../../components/forms/ExpensesTransactionForm';
-import IncomeTransaction, { incomes } from './IncomeTransaction';
+import IncomeTransaction from './IncomeTransaction';
 import ExpensesTransaction from './ExpensesTransaction';
 import Header from '../../components/Header';
 import Balance from './Balance';
@@ -23,7 +23,6 @@ const ListSection = styled.section`
 `;
 
 const Budget = () => {
-  console.log( incomes );
   return (
     <>
       <TopSection>

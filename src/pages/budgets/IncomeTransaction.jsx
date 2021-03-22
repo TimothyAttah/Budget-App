@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Icon, Button } from 'semantic-ui-react';
-
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
+import { listIncomeBudgets } from '../../redux/actions/incomeBudgetActions';
 
 const MainWrapper = styled.ul`
 width: 500px;
@@ -36,33 +38,14 @@ li h3 {
   margin: 0;
   padding: 0;
 }
-
 `;
 
-export const incomes = [
-  {
-    id: 1,
-    content: 'Salary',
-    value: 5000
-  },
-  {
-    id: 2,
-    content: 'Project',
-    value: 3000
-  },
-  {
-    id: 3,
-    content: 'Gift',
-    value: 2000
-  },
-  {
-    id: 4,
-    content: 'Class Work',
-    value: 5000
-  },
-];
-
 const IncomeTransaction = () => {
+  const dispatch = useDispatch();
+  useEffect( () => {
+    dispatch( listIncomeBudgets() );
+  }, [] );
+  const incomes = useSelector( state => state.incomeBudgets.budgets );
   return (
     <MainWrapper>
       <h2>Income List Transaction</h2>

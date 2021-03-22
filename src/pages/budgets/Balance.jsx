@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { incomes } from './IncomeTransaction';
-import { expenses } from './ExpensesTransaction';
+import { useSelector } from 'react-redux';
 
 const IncomeExpenseBox = styled.div`
   h2 {
@@ -15,6 +13,8 @@ const IncomeExpenseBox = styled.div`
 `;
 
 const Balance = () => {
+  const incomes = useSelector( state => state.incomeBudgets.budgets );
+  const expenses = useSelector( state => state.expensesBudgets.budgets );
   const incomeTransaction = incomes.map( data => data.value );
   const expenseTransaction = expenses.map( data => data.value );
   const totalIncome = incomeTransaction.reduce( ( value, result ) => value += result ).toFixed( 2 );
