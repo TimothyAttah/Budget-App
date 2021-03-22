@@ -1,30 +1,30 @@
 import {
-  CREATE_BUDGETS, DELETE_BUDGET, EDIT_BUDGET, LIST_BUDGETS
+  CREATE_EXPENSES_BUDGETS, LIST_EXPENSES_BUDGETS, DELETE_EXPENSES_BUDGET, EDIT_EXPENSES_BUDGET
 } from '../type';
 
 export const createExpensesBudget = budgets => {
   return {
-    type: CREATE_BUDGETS,
+    type: CREATE_EXPENSES_BUDGETS,
     payload: budgets
   };
 };
 
 export const listExpensesBudgets = () => {
   return {
-    type: LIST_BUDGETS
+    type: LIST_EXPENSES_BUDGETS
   };
 };
 
 export const deleteExpensesBudget = id => {
   return {
-    type: DELETE_BUDGET,
+    type: DELETE_EXPENSES_BUDGET,
     payload: id
   };
 };
 
 export const editExpensesBudget = budget => {
   return {
-    type: EDIT_BUDGET,
+    type: EDIT_EXPENSES_BUDGET,
     payload: budget
   };
 };

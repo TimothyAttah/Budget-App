@@ -3,7 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { listExpensesBudgets } from '../../redux/actions/expensesBudgetActions';
+import { listExpensesBudgets, deleteExpensesBudget } from '../../redux/actions/expensesBudgetActions';
 
 const MainWrapper = styled.ul`
 width: 500px;padding: 0;
@@ -58,7 +58,7 @@ const ExpensesTransaction = () => {
                   <span>{ `$ ${ expense.value }` }</span>
                 </h3>
                 <div>
-                  <button type="button"><Icon name="trash" color="red" /></button>
+                  <button onClick={ () => dispatch(deleteExpensesBudget( expense.id )) } type="button"><Icon name="trash" color="red" /></button>
                   <button type="button"><Icon name="edit" color="blue" /></button>
                 </div>
               </li>
