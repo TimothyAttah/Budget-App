@@ -7,22 +7,22 @@ const initialState = {
     {
       id: 1,
       content: 'Salary',
-      value: 5000
+      values: 5000
     },
     {
       id: 2,
       content: 'Project',
-      value: 3000
+      values: 3000
     },
     {
       id: 3,
       content: 'Gift',
-      value: 2000
+      values: 2000
     },
     {
       id: 4,
       content: 'Class Work',
-      value: 5000
+      values: 5000
     },
   ]
 };
