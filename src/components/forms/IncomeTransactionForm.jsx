@@ -31,7 +31,6 @@ const IncomeTransactionForm = () => {
     const newInc = {
       content,
       values: parseInt( values ),
-      id: Math.random()
     };
     dispatch( createIncomeBudget( newInc ) );
     console.log(newInc);

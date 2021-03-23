@@ -16,13 +16,6 @@ export const createIncomeBudget = ( newIncome ) => async dispatch => {
   }
 };
 
-// export const createIncomeBudget = budgets => {
-//   return {
-//     type: CREATE_INCOME_BUDGETS,
-//     payload: budgets
-//   };
-// };
-
 export const listIncomeBudgets = () => async dispatch => {
   try {
     const { data } = await api.getIncome();
