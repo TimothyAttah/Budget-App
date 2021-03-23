@@ -15,8 +15,8 @@ const IncomeExpenseBox = styled.div`
 const Balance = () => {
   const incomes = useSelector( state => state.incomeBudgets.budgets );
   const expenses = useSelector( state => state.expensesBudgets.budgets );
-  const incomeTransaction = incomes.map( data => data.value );
-  const expenseTransaction = expenses.map( data => data.value );
+  const incomeTransaction = incomes.map( data => data.values );
+  const expenseTransaction = expenses.map( data => data.values );
   const totalIncome = incomeTransaction.reduce( ( value, result ) => value += result, 0 ).toFixed( 2 );
   const totalExpenses = expenseTransaction.reduce( ( value, result ) => value += result, 0 ).toFixed( 2 );
   const totalBalance = (totalIncome - totalExpenses).toFixed(2);

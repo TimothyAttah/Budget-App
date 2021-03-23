@@ -51,6 +51,8 @@
         "no-return-assign": 0,
         "no-param-reassign": 0,
         "max-len": 0,
-        "array-bracket-spacing": 0
+        "radix": 0,
+        "array-bracket-spacing": 0,
+        "computed-property-spacing": 0
     }
 }

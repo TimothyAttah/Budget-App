@@ -56,7 +56,7 @@ const IncomeTransaction = () => {
               <li key={ income.id }>
                 <h3>
                   { `${ income.content }:` }
-                  <span>{ `$ ${ income.value }` }</span>
+                  <span>{ `$ ${ income.values }` }</span>
                 </h3>
                 <div>
                   <Button onClick={ () => dispatch( deleteIncomeBudget( income.id ) ) } type="button"><Icon name="trash" color="red" /></Button>

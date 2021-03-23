@@ -7,17 +7,17 @@ const initialState = {
     {
       id: 1,
       content: 'Groceries',
-      value: 5000
+      values: 5000
     },
     {
       id: 2,
       content: 'T-fare',
-      value: 3000
+      values: 3000
     },
     {
       id: 3,
       content: 'Shopping Mall',
-      value: 2000
+      values: 2000
     }
   ]
 };

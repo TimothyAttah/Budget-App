@@ -55,7 +55,7 @@ const ExpensesTransaction = () => {
               <li key={ expense.id }>
                 <h3>
                   { `${ expense.content }:` }
-                  <span>{ `$ ${ expense.value }` }</span>
+                  <span>{ `$ ${ expense.values }` }</span>
                 </h3>
                 <div>
                   <button onClick={ () => dispatch(deleteExpensesBudget( expense.id )) } type="button"><Icon name="trash" color="red" /></button>
