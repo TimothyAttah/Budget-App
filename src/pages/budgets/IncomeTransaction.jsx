@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Icon, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
@@ -59,8 +59,8 @@ const IncomeTransaction = () => {
                   <span>{ `$ ${ income.values }` }</span>
                 </h3>
                 <div>
-                  <Button onClick={ () => dispatch( deleteIncomeBudget( income.id ) ) } type="button"><Icon name="trash" color="red" /></Button>
-                  <Button type="button"><Icon name="edit" color="blue" /></Button>
+                  <Button onClick={ () => dispatch( deleteIncomeBudget( income.id ) ) } type="button" icon="trash" color="red" size="tiny" />
+                  <Button type="button" icon="edit" color="blue" size="tiny" />
                 </div>
               </li>
             );
