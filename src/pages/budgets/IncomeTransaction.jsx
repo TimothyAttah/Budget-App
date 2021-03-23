@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { listIncomeBudgets, deleteIncomeBudget } from '../../redux/actions/incomeBudgetActions';
@@ -42,11 +43,16 @@ li h3 {
 
 const IncomeTransaction = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   useEffect( () => {
     dispatch( listIncomeBudgets() );
   }, [] );
-  const incomes = useSelector( state => state.incomeBudgets.budgets );
-  console.log(incomes);
+  const incomes = useSelector( state => state.incomeBudgets );
+  console.log( incomes );
+  const handleDelete = ( id ) => {
+    dispatch( deleteIncomeBudget( id ) );
+    history.push( '/' );
+  };
   return (
     <MainWrapper>
       <h2>Income List Transaction</h2>
@@ -60,7 +66,7 @@ const IncomeTransaction = () => {
                   <span>{ `$ ${ income.values }` }</span>
                 </h3>
                 <div>
-                  <Button onClick={ () => dispatch( deleteIncomeBudget( income._id ) ) } type="button" icon="trash" color="red" size="tiny" />
+                  <Button onClick={ () => handleDelete(income._id) } type="button" icon="trash" color="red" size="tiny" />
                   <Button type="button" icon="edit" color="blue" size="tiny" />
                 </div>
               </li>
