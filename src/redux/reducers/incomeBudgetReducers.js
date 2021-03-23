@@ -4,26 +4,26 @@ import {
 
 const initialState = {
   budgets: [
-    {
-      id: 1,
-      content: 'Salary',
-      values: 5000
-    },
-    {
-      id: 2,
-      content: 'Project',
-      values: 3000
-    },
-    {
-      id: 3,
-      content: 'Gift',
-      values: 2000
-    },
-    {
-      id: 4,
-      content: 'Class Work',
-      values: 5000
-    },
+    // {
+    //   id: 1,
+    //   content: 'Salary',
+    //   values: 5000
+    // },
+    // {
+    //   id: 2,
+    //   content: 'Project',
+    //   values: 3000
+    // },
+    // {
+    //   id: 3,
+    //   content: 'Gift',
+    //   values: 2000
+    // },
+    // {
+    //   id: 4,
+    //   content: 'Class Work',
+    //   values: 5000
+    // },
   ]
 };
 
@@ -36,7 +36,8 @@ const incomeBudgets = ( state = initialState, action ) => {
       };
     case LIST_INCOME_BUDGETS:
       return {
-        ...state
+        ...state,
+        budgets: action.payload
       };
     case DELETE_INCOME_BUDGET:
       return {

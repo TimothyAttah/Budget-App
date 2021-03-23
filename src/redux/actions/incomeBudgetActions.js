@@ -2,17 +2,37 @@ import {
   CREATE_INCOME_BUDGETS, LIST_INCOME_BUDGETS, DELETE_INCOME_BUDGET, EDIT_INCOME_BUDGET
 } from '../type';
 
-export const createIncomeBudget = budgets => {
-  return {
-    type: CREATE_INCOME_BUDGETS,
-    payload: budgets
-  };
+import * as api from '../api';
+
+export const createIncomeBudget = ( newIncome ) => async dispatch => {
+  try {
+    const { data } = await api.createIncome( newIncome );
+    dispatch( {
+      type: CREATE_INCOME_BUDGETS,
+      payload: data.data
+    } );
+  } catch ( error ) {
+    console.log( error );
+  }
 };
 
-export const listIncomeBudgets = () => {
-  return {
-    type: LIST_INCOME_BUDGETS
-  };
+// export const createIncomeBudget = budgets => {
+//   return {
+//     type: CREATE_INCOME_BUDGETS,
+//     payload: budgets
+//   };
+// };
+
+export const listIncomeBudgets = () => async dispatch => {
+  try {
+    const { data } = await api.getIncome();
+    dispatch( {
+      type: LIST_INCOME_BUDGETS,
+      payload: data.data
+    } );
+  } catch (error) {
+    console.log( error );
+  }
 };
 
 export const deleteIncomeBudget = id => {

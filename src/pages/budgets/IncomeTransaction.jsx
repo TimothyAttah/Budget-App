@@ -46,6 +46,7 @@ const IncomeTransaction = () => {
     dispatch( listIncomeBudgets() );
   }, [] );
   const incomes = useSelector( state => state.incomeBudgets.budgets );
+  console.log(incomes);
   return (
     <MainWrapper>
       <h2>Income List Transaction</h2>
@@ -53,13 +54,13 @@ const IncomeTransaction = () => {
         { incomes.length ? (
           incomes.map( income => {
             return (
-              <li key={ income.id }>
+              <li key={ income._id }>
                 <h3>
                   { `${ income.content }:` }
                   <span>{ `$ ${ income.values }` }</span>
                 </h3>
                 <div>
-                  <Button onClick={ () => dispatch( deleteIncomeBudget( income.id ) ) } type="button" icon="trash" color="red" size="tiny" />
+                  <Button onClick={ () => dispatch( deleteIncomeBudget( income._id ) ) } type="button" icon="trash" color="red" size="tiny" />
                   <Button type="button" icon="edit" color="blue" size="tiny" />
                 </div>
               </li>
