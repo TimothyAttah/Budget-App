@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { createExpensesBudget } from '../../redux/actions/expensesBudgetActions';
 
 const Form = styled.form`
-margin: 30px 0;
+margin: 5px 0;
   input, button {
     border: 2px solid red;
     outline-color: red;

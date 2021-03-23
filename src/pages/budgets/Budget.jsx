@@ -16,6 +16,15 @@ const TopSection = styled.section`
  background: linear-gradient(45deg,rgba(255,0,0,0), rgba(0,0,255,1));
 `;
 
+const FormSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  padding: 10px 0;
+`;
+
 const ListSection = styled.section`
   display: flex;
   justify-content: space-between;
@@ -28,9 +37,11 @@ const Budget = () => {
       <TopSection>
         <Header />
         <Balance />
+      </TopSection>
+      <FormSection>
         <IncomeTransactionForm />
         <ExpensesTransactionForm />
-      </TopSection>
+      </FormSection>
       <ListSection>
         <IncomeTransaction />
         <ExpensesTransaction />
