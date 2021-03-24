@@ -42,12 +42,12 @@ li h3 {
 `;
 
 const IncomeTransaction = () => {
+  const incomes = useSelector( state => state.incomeBudgets );
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect( () => {
     dispatch( listIncomeBudgets() );
-  }, [] );
-  const incomes = useSelector( state => state.incomeBudgets );
+  }, [dispatch] );
   console.log( incomes );
   const handleDelete = ( id ) => {
     dispatch( deleteIncomeBudget( id ) );

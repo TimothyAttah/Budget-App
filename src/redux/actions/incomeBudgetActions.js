@@ -9,7 +9,7 @@ export const createIncomeBudget = ( newIncome ) => async dispatch => {
     const { data } = await api.createIncome( newIncome );
     dispatch( {
       type: CREATE_INCOME_BUDGETS,
-      payload: data.data
+      payload: data.newIncome
     } );
   } catch ( error ) {
     console.log( error );
@@ -21,14 +21,14 @@ export const listIncomeBudgets = () => async dispatch => {
     const { data } = await api.getIncome();
     dispatch( {
       type: LIST_INCOME_BUDGETS,
-      payload: data.data
+      payload: data
     } );
   } catch (error) {
     console.log( error );
   }
 };
 
-export const deleteIncomeBudget = ( id ) => async dispatch => {
+export const deleteIncomeBudget = ( id ) => async ( dispatch) => {
   try {
     await api.deleteIncome( id );
     dispatch( {
