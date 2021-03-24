@@ -33,7 +33,8 @@ const IncomeTransactionForm = () => {
       values: parseInt( values ),
     };
     dispatch( createIncomeBudget( newInc ) );
-    console.log(newInc);
+    setContent( '' );
+    setValues( '' );
   };
   return (
     <div>

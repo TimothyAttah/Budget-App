@@ -34,7 +34,8 @@ const ExpensesTransactionForm = () => {
       values: parseInt( values )
     };
     dispatch( createExpensesBudget( newExp ) );
-    console.log(newExp);
+    setContent( '' );
+    setValues( '' );
   };
   return (
     <>
