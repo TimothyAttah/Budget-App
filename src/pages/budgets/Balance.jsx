@@ -35,7 +35,7 @@ const BudgetContainer = styled.div`
 `;
 
 const Balance = () => {
-  const incomes = useSelector( state => state.incomeBudgets.budgets );
+  const incomes = useSelector( state => state.incomeBudgets );
   const expenses = useSelector( state => state.expensesBudgets.budgets );
   const incomeTransaction = incomes.map( data => data.values );
   const expenseTransaction = expenses.map( data => data.values );
