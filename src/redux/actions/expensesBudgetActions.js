@@ -4,11 +4,16 @@ import {
 
 import * as api from '../api';
 
-export const createExpensesBudget = budgets => {
-  return {
-    type: CREATE_EXPENSES_BUDGETS,
-    payload: budgets
-  };
+export const createExpensesBudget = ( newExpenses ) => async dispatch => {
+  try {
+    const { data } = await api.createExpenses( newExpenses );
+    dispatch( {
+      type: CREATE_EXPENSES_BUDGETS,
+      payload: data.newExpenses
+    } );
+  } catch ( error ) {
+    console.log( error );
+  }
 };
 
 export const listExpensesBudgets = () => async dispatch => {
@@ -23,11 +28,16 @@ export const listExpensesBudgets = () => async dispatch => {
   }
 };
 
-export const deleteExpensesBudget = id => {
-  return {
-    type: DELETE_EXPENSES_BUDGET,
-    payload: id
-  };
+export const deleteExpensesBudget = id => async dispatch => {
+  try {
+    await api.deleteExpenses( id );
+    dispatch( {
+      type: DELETE_EXPENSES_BUDGET,
+      payload: id
+    } );
+  } catch ( error ) {
+    console.log( error );
+  }
 };
 
 export const editExpensesBudget = budget => {

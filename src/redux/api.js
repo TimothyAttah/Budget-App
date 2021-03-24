@@ -10,3 +10,7 @@ export const createIncome = ( newIncome ) => axios.post( `${ incomeUrl }/create/
 export const deleteIncome = ( id ) => axios.delete( `${ incomeUrl }/delete/income/${ id }` );
 
 export const getExpenses = () => axios.get( expenseUrl );
+
+export const createExpenses = ( newExpenses ) => axios.post( `${ expenseUrl }/create`, newExpenses );
+
+export const deleteExpenses = ( id ) => axios.delete( `${ expenseUrl }/delete/${ id }` );

@@ -52,13 +52,13 @@ const ExpensesTransaction = () => {
         { expenses.length ? (
           expenses.map( expense => {
             return (
-              <li key={ expense.id }>
+              <li key={ expense._id }>
                 <h3>
                   { `${ expense.content }:` }
                   <span>{ `$ ${ expense.values }` }</span>
                 </h3>
                 <div>
-                  <button onClick={ () => dispatch(deleteExpensesBudget( expense.id )) } type="button"><Icon name="trash" color="red" /></button>
+                  <button onClick={ () => dispatch(deleteExpensesBudget( expense._id )) } type="button"><Icon name="trash" color="red" /></button>
                   <button type="button"><Icon name="edit" color="blue" /></button>
                 </div>
               </li>

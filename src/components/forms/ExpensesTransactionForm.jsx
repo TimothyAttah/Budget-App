@@ -31,8 +31,7 @@ const ExpensesTransactionForm = () => {
     e.preventDefault();
     const newExp = {
       content,
-      values: parseInt( values ),
-      id: Math.random()
+      values: parseInt( values )
     };
     dispatch( createExpensesBudget( newExp ) );
     console.log(newExp);
