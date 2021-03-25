@@ -31,6 +31,18 @@
                 "disallow": "as-needed"
             }
         ],
+        "react/forbid-prop-types": [
+            0,
+            {
+                "disallow": "as-needed"
+            }
+        ],
+        "react/require-default-props": [
+            0,
+            {
+                "disallow": "as-needed"
+            }
+        ],
         "react/jsx-curly-spacing": [
             0,
             {

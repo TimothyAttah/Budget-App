@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { Icon } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { listExpensesBudgets, deleteExpensesBudget } from '../../redux/actions/expensesBudgetActions';
@@ -39,9 +41,8 @@ li h3 {
 }
 `;
 
-const ExpensesTransaction = () => {
+const ExpensesTransaction = ({ expenses, setCurrentId }) => {
   const dispatch = useDispatch();
-  const expenses = useSelector( state => state.expensesBudgets.budgets );
   useEffect( () => {
     dispatch( listExpensesBudgets() );
   }, [] );
@@ -58,8 +59,8 @@ const ExpensesTransaction = () => {
                   <span>{ `$ ${ expense.values }` }</span>
                 </h3>
                 <div>
-                  <button onClick={ () => dispatch(deleteExpensesBudget( expense._id )) } type="button"><Icon name="trash" color="red" /></button>
-                  <button type="button"><Icon name="edit" color="blue" /></button>
+                  <button onClick={ () => dispatch( deleteExpensesBudget( expense._id ) ) } type="button"><Icon name="trash" color="red" /></button>
+                  <button type="button" onClick={() => setCurrentId(expense._id)}><Icon name="edit" color="blue" /></button>
                 </div>
               </li>
             );
@@ -70,6 +71,11 @@ const ExpensesTransaction = () => {
       </UlWrapper>
     </MainWrapper>
   );
+};
+
+ExpensesTransaction.propTypes = {
+  expenses: PropTypes.array.isRequired,
+  setCurrentId: PropTypes.func
 };
 
 export default ExpensesTransaction;

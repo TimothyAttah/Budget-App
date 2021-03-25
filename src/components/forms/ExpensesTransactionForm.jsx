@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon, Button } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { createExpensesBudget } from '../../redux/actions/expensesBudgetActions';
+import { createExpensesBudget, editExpensesBudget } from '../../redux/actions/expensesBudgetActions';
 
 const Form = styled.form`
 margin: 5px 0;
@@ -23,19 +24,29 @@ margin: 5px 0;
   }
 `;
 
-const ExpensesTransactionForm = () => {
+const ExpensesTransactionForm = ({ currentId, setCurrentId }) => {
   const [ content, setContent ] = useState( '' );
   const [ values, setValues ] = useState( '' );
   const dispatch = useDispatch();
+  const expenseBudgets = useSelector( state => ( currentId ? state.expensesBudgets.budgets.find( exp => exp._id === currentId ) : null ) );
+  useEffect( () => {
+    if ( expenseBudgets ) setContent( expenseBudgets.content );
+    if ( expenseBudgets ) setValues( expenseBudgets.values );
+  }, [ expenseBudgets ] );
   const handleSubmit = ( e ) => {
     e.preventDefault();
     const newExp = {
       content,
       values: parseInt( values )
     };
-    dispatch( createExpensesBudget( newExp ) );
+    if ( currentId ) {
+      dispatch( editExpensesBudget( currentId, newExp ) );
+    } else {
+      dispatch( createExpensesBudget( newExp ) );
+    }
     setContent( '' );
     setValues( '' );
+    setCurrentId( null );
   };
   return (
     <>
@@ -49,6 +60,11 @@ const ExpensesTransactionForm = () => {
       </Form>
     </>
   );
+};
+
+ExpensesTransactionForm.propTypes = {
+  currentId: PropTypes.func,
+  setCurrentId: PropTypes.func
 };
 
 export default ExpensesTransactionForm;

@@ -26,7 +26,7 @@ const expensesBudgets = ( state = initialState, action ) => {
     case EDIT_EXPENSES_BUDGET:
       return {
         ...state,
-        budgets: [ ...state.budgets ]
+        budgets: state.budgets.map(budget => (budget._id === action.payload._id ? action.payload : budget))
       };
     default:
       return state;

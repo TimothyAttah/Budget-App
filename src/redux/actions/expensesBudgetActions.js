@@ -40,9 +40,14 @@ export const deleteExpensesBudget = id => async dispatch => {
   }
 };
 
-export const editExpensesBudget = budget => {
-  return {
-    type: EDIT_EXPENSES_BUDGET,
-    payload: budget
-  };
+export const editExpensesBudget = ( id, updatedExpenses ) => async dispatch => {
+  try {
+    const { data } = await api.updateExpenses( id, updatedExpenses );
+    dispatch( {
+      type: EDIT_EXPENSES_BUDGET,
+      payload: data.updatedExpenses
+    } );
+  } catch ( error ) {
+    console.log( error );
+  }
 };

@@ -13,4 +13,6 @@ export const getExpenses = () => axios.get( expenseUrl );
 
 export const createExpenses = ( newExpenses ) => axios.post( `${ expenseUrl }/create`, newExpenses );
 
+export const updateExpenses = ( id, updatedExpenses ) => axios.patch( `${ expenseUrl }/update/${ id }`, updatedExpenses );
+
 export const deleteExpenses = ( id ) => axios.delete( `${ expenseUrl }/delete/${ id }` );
