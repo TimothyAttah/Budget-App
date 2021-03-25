@@ -56,7 +56,7 @@ const IncomeTransaction = ( { incomes } ) => {
   };
   return (
     <MainWrapper>
-      <h2>Income List Transaction</h2>
+      <h2>Income Transaction  History</h2>
       <UlWrapper>
         { incomes.length ? (
           incomes.map( income => {
@@ -75,9 +75,9 @@ const IncomeTransaction = ( { incomes } ) => {
           } )
         ) : (
           <div>
-            <Segment>
-              <Dimmer active>
-                <Loader>Loading</Loader>
+            <Segment size="large" style={{ height: '200px' }}>
+              <Dimmer active inverted>
+                <Loader>Loading...</Loader>
               </Dimmer>
             </Segment>
           </div>

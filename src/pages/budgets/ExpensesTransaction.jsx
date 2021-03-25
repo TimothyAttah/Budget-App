@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Icon } from 'semantic-ui-react';
+import {
+  Icon, Segment, Dimmer, Loader
+} from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
@@ -48,7 +50,7 @@ const ExpensesTransaction = ({ expenses, setCurrentId }) => {
   }, [] );
   return (
     <MainWrapper>
-      <h2>Expenses List Transaction</h2>
+      <h2>Expenses Transaction History</h2>
       <UlWrapper>
         { expenses.length ? (
           expenses.map( expense => {
@@ -60,13 +62,19 @@ const ExpensesTransaction = ({ expenses, setCurrentId }) => {
                 </h3>
                 <div>
                   <button onClick={ () => dispatch( deleteExpensesBudget( expense._id ) ) } type="button"><Icon name="trash" color="red" /></button>
-                  <button type="button" onClick={() => setCurrentId(expense._id)}><Icon name="edit" color="blue" /></button>
+                  <button type="button" onClick={ () => setCurrentId( expense._id ) }><Icon name="edit" color="blue" /></button>
                 </div>
               </li>
             );
           } )
         ) : (
-          <div><h2>You have no expenses transaction yet</h2></div>
+          <div>
+            <Segment size="large" style={ { height: '200px' } }>
+              <Dimmer active inverted>
+                <Loader>Loading... </Loader>
+              </Dimmer>
+            </Segment>
+          </div>
         ) }
       </UlWrapper>
     </MainWrapper>
