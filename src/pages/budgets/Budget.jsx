@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import IncomeTransactionForm from '../../components/forms/IncomeTransactionForm';
@@ -34,6 +35,10 @@ const ListSection = styled.section`
 `;
 
 const Budget = () => {
+  const [ currentId, setCurrentId ] = useState( null );
+  const incomes = useSelector( state => state.incomeBudgets );
+  const expenses = useSelector( state => state.expensesBudgets.budgets );
+
   return (
     <>
       <TopSection>
@@ -42,11 +47,11 @@ const Budget = () => {
       </TopSection>
       <FormSection>
         <IncomeTransactionForm />
-        <ExpensesTransactionForm />
+        <ExpensesTransactionForm currentId={ currentId } setCurrentId={setCurrentId} expenses={expenses} />
       </FormSection>
       <ListSection>
-        <IncomeTransaction />
-        <ExpensesTransaction />
+        <IncomeTransaction incomes={incomes} />
+        <ExpensesTransaction currentId={ currentId } setCurrentId={ setCurrentId } expenses={expenses} />
       </ListSection>
     </>
   );

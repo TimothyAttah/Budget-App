@@ -3,23 +3,7 @@ import {
 } from '../type';
 
 const initialState = {
-  budgets: [
-    {
-      id: 1,
-      content: 'Groceries',
-      values: 5000
-    },
-    {
-      id: 2,
-      content: 'T-fare',
-      values: 3000
-    },
-    {
-      id: 3,
-      content: 'Shopping Mall',
-      values: 2000
-    }
-  ]
+  budgets: []
 };
 
 const expensesBudgets = ( state = initialState, action ) => {
@@ -31,17 +15,18 @@ const expensesBudgets = ( state = initialState, action ) => {
       };
     case LIST_EXPENSES_BUDGETS:
       return {
-        ...state
+        ...state,
+        budgets: action.payload
       };
     case DELETE_EXPENSES_BUDGET:
       return {
         ...state,
-        budgets: state.budgets.filter( budget => budget.id !== action.payload )
+        budgets: state.budgets.filter( budget => budget._id !== action.payload )
       };
     case EDIT_EXPENSES_BUDGET:
       return {
         ...state,
-        budgets: [ ...state.budgets ]
+        budgets: state.budgets.map(budget => (budget._id === action.payload._id ? action.payload : budget))
       };
     default:
       return state;

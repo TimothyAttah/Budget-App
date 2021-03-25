@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
-import { Button } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import {
+  Button, Loader, Dimmer, Segment
+} from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -41,14 +44,12 @@ li h3 {
 }
 `;
 
-const IncomeTransaction = () => {
-  const incomes = useSelector( state => state.incomeBudgets );
+const IncomeTransaction = ( { incomes } ) => {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect( () => {
     dispatch( listIncomeBudgets() );
-  }, [dispatch] );
-  console.log( incomes );
+  }, [ dispatch ] );
   const handleDelete = ( id ) => {
     dispatch( deleteIncomeBudget( id ) );
     history.push( '/' );
@@ -66,18 +67,28 @@ const IncomeTransaction = () => {
                   <span>{ `$ ${ income.values }` }</span>
                 </h3>
                 <div>
-                  <Button onClick={ () => handleDelete(income._id) } type="button" icon="trash" color="red" size="tiny" />
+                  <Button onClick={ () => handleDelete( income._id ) } type="button" icon="trash" color="red" size="tiny" />
                   <Button type="button" icon="edit" color="blue" size="tiny" />
                 </div>
               </li>
             );
           } )
         ) : (
-          <div><h2>You have no income transaction yet</h2></div>
+          <div>
+            <Segment>
+              <Dimmer active>
+                <Loader>Loading</Loader>
+              </Dimmer>
+            </Segment>
+          </div>
         ) }
       </UlWrapper>
     </MainWrapper>
   );
+};
+
+IncomeTransaction.propTypes = {
+  incomes: PropTypes.array.isRequired
 };
 
 export default IncomeTransaction;
