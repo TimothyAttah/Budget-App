@@ -7,6 +7,8 @@ export const getIncome = () => axios.get( `${ incomeUrl }` );
 
 export const createIncome = ( newIncome ) => axios.post( `${ incomeUrl }/create/income`, newIncome );
 
+export const updateIncome = ( id, updatedIncome ) => axios.patch( `${ incomeUrl }/update/income/${ id }`, updatedIncome );
+
 export const deleteIncome = ( id ) => axios.delete( `${ incomeUrl }/delete/income/${ id }` );
 
 export const getExpenses = () => axios.get( expenseUrl );

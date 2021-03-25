@@ -28,6 +28,18 @@ export const listIncomeBudgets = () => async dispatch => {
   }
 };
 
+export const editIncomeBudget = ( id, updatedIncome ) => async dispatch => {
+  try {
+    const { data } = await api.updateIncome( id, updatedIncome );
+    dispatch( {
+      type: EDIT_INCOME_BUDGET,
+      payload: data.updatedIncome
+    } );
+  } catch ( error ) {
+    console.log( error );
+  }
+};
+
 export const deleteIncomeBudget = ( id ) => async ( dispatch) => {
   try {
     await api.deleteIncome( id );
@@ -38,11 +50,4 @@ export const deleteIncomeBudget = ( id ) => async ( dispatch) => {
   } catch ( error ) {
     console.log( error );
   }
-};
-
-export const editIncomeBudget = budget => {
-  return {
-    type: EDIT_INCOME_BUDGET,
-    payload: budget
-  };
 };

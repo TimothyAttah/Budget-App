@@ -44,7 +44,7 @@ li h3 {
 }
 `;
 
-const IncomeTransaction = ( { incomes } ) => {
+const IncomeTransaction = ( { incomes, setIncomeId } ) => {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect( () => {
@@ -68,7 +68,7 @@ const IncomeTransaction = ( { incomes } ) => {
                 </h3>
                 <div>
                   <Button onClick={ () => handleDelete( income._id ) } type="button" icon="trash" color="red" size="tiny" />
-                  <Button type="button" icon="edit" color="blue" size="tiny" />
+                  <Button type="button" icon="edit" color="blue" size="tiny" onClick={() => setIncomeId(income._id)} />
                 </div>
               </li>
             );
@@ -88,7 +88,8 @@ const IncomeTransaction = ( { incomes } ) => {
 };
 
 IncomeTransaction.propTypes = {
-  incomes: PropTypes.array.isRequired
+  incomes: PropTypes.array.isRequired,
+  setIncomeId: PropTypes.func
 };
 
 export default IncomeTransaction;

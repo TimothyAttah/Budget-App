@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Budget from './pages/budgets/Budget';
-import { listIncomeBudgets } from './redux/actions/incomeBudgetActions';
 
 const Main = styled.main`
  border: 2px solid red;
@@ -13,10 +11,6 @@ const Main = styled.main`
 `;
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect( () => {
-    dispatch( listIncomeBudgets() );
-  }, [dispatch] );
   return (
     <Main>
       <Router>

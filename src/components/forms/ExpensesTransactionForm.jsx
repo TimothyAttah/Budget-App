@@ -63,7 +63,7 @@ const ExpensesTransactionForm = ({ currentId, setCurrentId }) => {
 };
 
 ExpensesTransactionForm.propTypes = {
-  currentId: PropTypes.func,
+  currentId: PropTypes.string,
   setCurrentId: PropTypes.func
 };
 

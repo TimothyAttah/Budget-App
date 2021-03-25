@@ -14,7 +14,7 @@ const incomeBudgets = ( budgets = [], action ) => {
       return budgets.filter( budget => budget._id !== action.payload );
 
     case EDIT_INCOME_BUDGET:
-      return action.payload;
+      return budgets.map( budget => ( budget._id === action.payload._id ? action.payload : budget ) );
 
     default:
       return budgets;

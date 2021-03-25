@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Button } from 'semantic-ui-react';
 
-import { createIncomeBudget } from '../../redux/actions/incomeBudgetActions';
+import { createIncomeBudget, editIncomeBudget } from '../../redux/actions/incomeBudgetActions';
 
 const Form = styled.form`
   input, button {
@@ -22,19 +24,31 @@ const Form = styled.form`
   }
 `;
 
-const IncomeTransactionForm = () => {
+const IncomeTransactionForm = ({ incomeId, setIncomeId }) => {
   const [ content, setContent ] = useState( '' );
   const [ values, setValues ] = useState( '' );
   const dispatch = useDispatch();
+  const incomesBudgets = useSelector( state => ( incomeId ? state.incomeBudgets.find( inc => inc._id === incomeId ) : null ) );
+  useEffect( () => {
+    if ( incomeId ) setContent( incomesBudgets.content );
+    if ( incomeId ) setValues( incomesBudgets.values );
+  }, [incomesBudgets] );
+
   const handleSubmit = ( e ) => {
     e.preventDefault();
     const newInc = {
       content,
       values: parseInt( values ),
     };
-    dispatch( createIncomeBudget( newInc ) );
+    if ( incomeId ) {
+      dispatch( editIncomeBudget( incomeId, newInc ) );
+    } else {
+      dispatch( createIncomeBudget( newInc ) );
+    }
+
     setContent( '' );
     setValues( '' );
+    setIncomeId( null );
   };
   return (
     <div>
@@ -48,6 +62,11 @@ const IncomeTransactionForm = () => {
       </Form>
     </div>
   );
+};
+
+IncomeTransactionForm.propTypes = {
+  incomeId: PropTypes.string,
+  setIncomeId: PropTypes.func
 };
 
 export default IncomeTransactionForm;

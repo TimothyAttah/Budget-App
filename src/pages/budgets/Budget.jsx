@@ -36,6 +36,7 @@ const ListSection = styled.section`
 
 const Budget = () => {
   const [ currentId, setCurrentId ] = useState( null );
+  const [ incomeId, setIncomeId ] = useState( null );
   const incomes = useSelector( state => state.incomeBudgets );
   const expenses = useSelector( state => state.expensesBudgets.budgets );
 
@@ -46,11 +47,11 @@ const Budget = () => {
         <Balance />
       </TopSection>
       <FormSection>
-        <IncomeTransactionForm />
+        <IncomeTransactionForm incomeId={incomeId} setIncomeId={setIncomeId} />
         <ExpensesTransactionForm currentId={ currentId } setCurrentId={setCurrentId} expenses={expenses} />
       </FormSection>
       <ListSection>
-        <IncomeTransaction incomes={incomes} />
+        <IncomeTransaction incomes={incomes} incomeId={incomeId} setIncomeId={setIncomeId} />
         <ExpensesTransaction currentId={ currentId } setCurrentId={ setCurrentId } expenses={expenses} />
       </ListSection>
     </>
