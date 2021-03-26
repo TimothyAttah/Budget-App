@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Icon, Button
@@ -38,11 +38,29 @@ const GoogleBox = styled.div`
 `;
 
 const SignUpForm = () => {
+  const [ users, setUsers ] = useState( {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  } );
+  const {
+    firstName, lastName, email, password
+  } = users;
+
+  const handleChange = ( e ) => {
+    setUsers( { ...users, [ e.target.name ]: e.target.value } );
+  };
+
+  const handleSubmit = ( e ) => {
+    e.preventDefault();
+    console.log( users );
+  };
   return (
     <div>
       <FormWrapper>
         <h1>Sign Up </h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <GoogleBox>Login with Google</GoogleBox>
           <h3>Or</h3>
           <label>First Name</label>
@@ -50,6 +68,8 @@ const SignUpForm = () => {
             type="text"
             placeholder="Enter first name..."
             name="firstName"
+            value={ firstName }
+            onChange={handleChange}
           />
 
           <label>Last Name</label>
@@ -57,18 +77,24 @@ const SignUpForm = () => {
             type="text"
             placeholder="Enter last name..."
             name="lastName"
+            value={ lastName }
+            onChange={handleChange}
           />
           <label>Email</label>
           <input
             type="email"
             placeholder="example@example.com"
             name="email"
+            value={ email }
+            onChange={handleChange}
           />
           <label>Password</label>
           <input
             type="password"
             placeholder="Enter password..."
             name="password"
+            value={ password }
+            onChange={handleChange}
           />
           <Button primary> <Icon name="sign in" /> Sign Up</Button>
           <h4>Already have an account? <span> <Link to="/user/sign-in">Sign In here</Link></span></h4>
