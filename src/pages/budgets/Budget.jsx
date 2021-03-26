@@ -6,7 +6,6 @@ import IncomeTransactionForm from '../../components/forms/IncomeTransactionForm'
 import ExpensesTransactionForm from '../../components/forms/ExpensesTransactionForm';
 import IncomeTransaction from './IncomeTransaction';
 import ExpensesTransaction from './ExpensesTransaction';
-import Header from '../../components/Header';
 import Balance from './Balance';
 
 const TopSection = styled.section`
@@ -43,7 +42,7 @@ const Budget = () => {
   return (
     <>
       <TopSection>
-        <Header />
+        <h2>Available budgets in May</h2>
         <Balance />
       </TopSection>
       <FormSection>
