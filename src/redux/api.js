@@ -21,3 +21,5 @@ export const updateExpenses = ( id, updatedExpenses ) => axios.patch( `${ expens
 export const deleteExpenses = ( id ) => axios.delete( `${ expenseUrl }/delete/${ id }` );
 
 export const getAllUser = () => axios.get( authUrl );
+
+export const signUpUser = ( users ) => axios.post( `${ authUrl }/sign-up`, users );

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   Icon, Button
 } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { signUpUser } from '../../redux/actions/authActions';
 
 const FormWrapper = styled.div`
   width: 500px;
@@ -48,13 +50,22 @@ const SignUpForm = () => {
     firstName, lastName, email, password
   } = users;
 
+  const dispatch = useDispatch();
+
   const handleChange = ( e ) => {
     setUsers( { ...users, [ e.target.name ]: e.target.value } );
   };
 
   const handleSubmit = ( e ) => {
     e.preventDefault();
-    console.log( users );
+    const savedUser = {
+      firstName,
+      lastName,
+      email,
+      password
+    };
+    dispatch( signUpUser( savedUser ) );
+    console.log( savedUser );
   };
   return (
     <div>

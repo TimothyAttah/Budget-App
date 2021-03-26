@@ -9,3 +9,4 @@ export const DELETE_EXPENSES_BUDGET = 'DELETE_EXPENSES_BUDGET';
 export const EDIT_EXPENSES_BUDGET = 'EDIT_EXPENSES_BUDGET';
 
 export const GET_USER = 'GET_USER';
+export const SIGN_UP = 'SIGN_UP';
